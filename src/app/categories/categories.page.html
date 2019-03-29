@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Principal
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="categories-list">
+
+    <!-- mis instalaciones-->
+    <ion-col class="category-item travel-category" size="12">
+      <app-image-shell [mode]="'cover'" class="category-cover" animation="spinner" [src]="'./assets/sample-images/categories/foto2.jpg'">
+        <app-aspect-ratio [ratio]="{w:75, h:49}">
+          <a class="category-anchor" [routerLink]="['/app/categories/instalaciones']">
+            <h2 class="category-title">Mis instalaciones</h2>
+          </a>
+        </app-aspect-ratio>
+      </app-image-shell>
+    </ion-col>
+
+    <!-- comandar -->
+    <ion-col class="category-item fashion-category" size="12">
+      <app-image-shell [mode]="'cover'" class="category-cover" animation="spinner" [src]="'./assets/sample-images/categories/foto4.jpg'">
+        <app-aspect-ratio [ratio]="{w:75, h:49}">
+          <a class="category-anchor" [routerLink]="['/app/categories/fashion']">
+            <h2 class="category-title">Comandar</h2>
+          </a>
+        </app-aspect-ratio>
+      </app-image-shell>
+    </ion-col>
+
+    <!-- nueva instalacion-->
+    <ion-col class="category-item food-category" size="12">
+      <app-image-shell [mode]="'cover'" class="category-cover" animation="spinner" [src]="'./assets/sample-images/categories/foto3.jpg'">
+        <app-aspect-ratio [ratio]="{w:2, h:1}">
+          <a class="category-anchor" [routerLink]="['/app/categories/nueva-instalacion']">
+            <h2 class="category-title">Nueva instalacion</h2>
+          </a>
+        </app-aspect-ratio>
+      </app-image-shell>
+    </ion-col>
+
+   <!--manuales-->
+    <ion-col class="category-item deals-category" size="12">
+      <app-image-shell [mode]="'cover'" class="category-cover" animation="spinner" [src]="'./assets/sample-images/dreams/fotox.jpg'">
+        <app-aspect-ratio [ratio]="{w:75, h:30}">
+          <a class="category-anchor" [routerLink]="['/app/categories/deals']">
+            <h2 class="category-title">Manuales</h2>
+          </a>
+        </app-aspect-ratio>
+      </app-image-shell>
+    </ion-col>
+
+    <!-- aun nose-->
+    <ion-col class="category-item real-state-category" size="12">
+      <app-image-shell [mode]="'cover'" class="category-cover" animation="spinner" [src]="'./assets/sample-images/categories/real-state.png'">
+        <app-aspect-ratio [ratio]="{w:75, h:30}">
+          <a class="category-anchor" [routerLink]="['/app/categories/real-state']">
+            <h2 class="category-title">aun nose </h2>
+          </a>
+        </app-aspect-ratio>
+      </app-image-shell>
+    </ion-col>
+
+  </ion-row>
+</ion-content>

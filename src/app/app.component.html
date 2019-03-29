@@ -1,0 +1,101 @@
+
+<!--  este app maneja en menu lateral-->
+<ion-app>
+  <ion-split-pane>
+
+    <ion-menu class="app-sidemenu">
+
+      <ion-header>
+        <ion-toolbar>
+
+          <ion-row class="user-details-wrapper">
+
+            <!--  logo -->
+            <ion-col size="4">
+              <app-aspect-ratio [ratio]="{w: 1, h: 1}">
+                <app-image-shell class="user-avatar add-spinner" src="./assets/sample-icons/iso.png"></app-image-shell>
+              </app-aspect-ratio>
+            </ion-col>
+
+                 <!--  titulo -->
+            <ion-col class="user-info-wrapper" size="8">
+              <h2 class="user-name">Aviatel Go</h2>
+              <h4 class="user-handle">@aviatel</h4>
+            </ion-col>
+
+          </ion-row>
+
+          <ion-row class="user-stats-wrapper user-details-wrapper">
+
+               <!--  datos adicionales -->
+            <ion-col>
+              <span class="user-stat-value">1553</span>
+              <span class="user-stat-name">siguiendo</span>
+            </ion-col>
+
+
+               <!--  datos adicionales -->
+            <ion-col>
+                <span class="user-stat-value">537</span>
+                <span class="user-stat-name">seguidores</span>
+            </ion-col>
+
+          </ion-row>
+
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content>
+
+        <!--paginas-->
+        <ion-list>
+          <ion-list-header>Paginas</ion-list-header>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+            <ion-item [routerLink]="p.url">
+              <ion-icon slot="start" [src]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+        <!-- tablero de trabajo-->
+        <ion-list>
+
+
+          <ion-list-header>Tablero de trabajo</ion-list-header>
+
+          <ion-menu-toggle auto-hide="false"*ngFor="let p of workPages; let i = index">
+
+            <ion-item [routerLink]="p.url">
+              <ion-icon slot="start" [src]="p.icon"></ion-icon>
+              <ion-label>
+               {{p.title}}
+              </ion-label>
+            </ion-item>
+
+          </ion-menu-toggle>
+        </ion-list>
+
+          <!-- cuenta -->
+        <ion-list>
+          <ion-list-header>Cuenta</ion-list-header>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of accountPages; let i = index">
+            <ion-item [routerLink]="p.url">
+              <ion-icon slot="start" [src]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+      </ion-content>
+
+    </ion-menu>
+
+    <!-- Main app content get's rendered in this router-outlet -->
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

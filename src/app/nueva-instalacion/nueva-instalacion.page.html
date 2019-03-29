@@ -1,0 +1,122 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Nueva instalacion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding >
+
+  <div *ngIf= "!vacio">
+
+      <ion-slides [options]="slideOpts">
+
+          <ion-slide *ngFor="let img of images; let i = index">
+      
+            <ion-fab vertical="top" horizontal="end" slot="fixed">
+      
+              <ion-fab-button
+                color="light"
+                (click)="removeImage(i)">
+                <ion-icon name="trash" color="danger"></ion-icon>
+              </ion-fab-button>
+            </ion-fab>
+      
+            <ion-card mode= "ios">
+              <img [src]="img.path">
+            </ion-card>
+      
+          </ion-slide>
+        </ion-slides>
+      
+     
+      
+        <form  *ngIf= "tenemos" [formGroup]= "memoryForm" (ngSubmit)= "saveMemory()">
+      
+          <ion-item>
+            <ion-label position="stacked">Titulo</ion-label>
+            <ion-input formControlName="title"></ion-input>
+          </ion-item>
+      
+          <ion-item>
+      
+            <ion-label position="stacked">fecha</ion-label>
+            <ion-datetime
+              formControlName="date"
+              displayFormat="DD/MM/YYYY">
+            </ion-datetime>
+      
+          </ion-item>
+      
+          <ion-item>
+      
+            <ion-label position="stacked">elegi un color</ion-label>
+            <br>
+            <ion-row class="color-row">
+              <ion-col
+                size="3"
+                class="color-col"
+                *ngFor="let col of colors"
+                [style.background]="col"
+                [class.selected]="col == memoryForm.get('color').value"
+                tappable= "tappable"
+                (click)="setColor(col)">
+              </ion-col>
+            </ion-row>
+      
+          </ion-item>
+      
+          <ion-item>
+      
+            <ion-textarea
+              formControlName="text"
+              rows="6"
+              placeholder= "describi esta foto de esta instalacion ">
+            </ion-textarea>
+      
+          </ion-item>
+      
+          <ion-button
+            expand="full"
+            type="submit"
+            [disabled]="!memoryForm.valid || images.length == 0">
+            <ion-icon name="checkmark" slot="start"></ion-icon>
+            Guardar en memoria
+          </ion-button>
+      
+        </form>
+      
+  </div>
+
+  <ion-fab vertical= "bottom" horizontal= "end" slot= "fixed">
+      <ion-fab-button
+        color="fondo-camara"
+        (click)="seleccionarFuente()">
+        <ion-icon color="camara" name="camera"></ion-icon>
+      </ion-fab-button>
+  </ion-fab>
+
+
+  <div class="legal-content" *ngIf= "vacio">
+
+  <h3 class= "legal-title">Instrucciones</h3>
+  <p class= "legal-text">
+    saca fotos de esta nueva instalacion. Al menos una, si son mas mejor!!!, estas quedaran en tu celular, las podras borrar, editar y compartir en tus redes sociales
+  </p>
+
+  <h3 class= "legal-title">Mis instalaciones</h3>
+  <p class="legal-text">
+    una vez creada la instalacion, las podras ver en mis instalaciones, donde habra un nombre de la instalacion, una fecha, una descripcion y una geolocalizacion de la misma
+  </p>
+
+  <h3 class= "legal-title">datos</h3>
+  <p class= "legal-text">
+    en mis-instalciones, ademas de fotos quedaran registradas las contraseñas de bluetooth para programar el equipo instalado
+  </p>
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,102 @@
+viene de ionic-4-full-starter-app-1.2
+
+
+ionic cordova plugin add cordova-plugin-bluetooth-serial
+npm install @ionic-native/bluetooth-serial
+
+ionic cordova plugin add cordova-plugin-camera
+npm install @ionic-native/camera
+
+ionic cordova plugin add cordova-plugin-file
+npm install @ionic-native/file
+
+ionic cordova plugin add cordova-plugin-ionic-webview
+npm install @ionic-native/ionic-webview
+
+ionic cordova plugin add cordova-sqlite-storage
+npm install --save @ionic/storage
+
+
+// hacemos los import en el app.module 
+
+generamos una pagina list 
+
+
+en prepare android lo ignora
+
+en ios no 
+
+agregamos en el config.xml para obtener los permios dde la camaray fotos 
+
+ <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
+        <string>solicitud para accceder a la camara</string>
+    </edit-config>
+
+    <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsagedescription">
+        <string>solicitud para accceder a fotos para obtener tus fotos</string>
+    </edit-config>
+
+    la lista de propiedades las obtenemso de : https://developer.apple.com/documentation/bundleresources/information_property_list/
+
+////////////////////////////// deploy android real ////////////////////////////
+
+hacemos en la terminal 
+
+ionic cordova prepare android  
+
+luego 
+ionic cordova build android
+
+en el celular activar la depuracion usb 
+en la consola 
+ionic cordova run --list
+nos da el  id  del cel 
+
+520023a9fcd86539
+
+luego hacemos ionic cordova run android -l
+y guala my app se despliega 
+
+la -l es para depurar
+
+sin la -l la app ya queda isntalada definitivamente 
+
+   "@angular/service-worker": "7.2.9",
+
+
+   como hacer un modal 
+
+   1) pag donde se crea el modal  
+   
+   html 
+
+   (click)="showPrivacyModal()"
+
+   ts :  se lo importa : import { PrivacyPolicyPage } from '../privacy-policy/privacy-policy.page';
+   
+   se lo crea : 
+
+     async showPrivacyModal() {
+    const modal = await this.modalController.create({
+      component: PrivacyPolicyPage
+    });
+    return await modal.present();
+  }
+
+  en el module de la pagina que se lo crea se coloca la page en las declarations
+
+   declarations: [PrivacyPolicyPage],
+
+
+2) se crea la pagina que oficia de modal 
+
+en el html se  renderiza lo que uno quire con un suerte de cierre 
+
+      <ion-button (click)="dismiss()">Close</ion-button>
+
+      en el ts: 
+
+  dismiss(): void {
+    this.modalController.dismiss();
+  }
+

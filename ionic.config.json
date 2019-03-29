@@ -1,0 +1,8 @@
+{
+  "name": "AviaGo",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}
